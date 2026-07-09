@@ -20,6 +20,10 @@ app.use('/api/usuario', usuarioRoutes);
 // ROUTES ACCOUNT
 app.use('/api/tareas', tareaRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Hello World. Server in running on port ${PORT}`);
-});
+if (process.env.VERCEL !== "1") {
+  app.listen(PORT, () => {
+    console.log(`Hello World. Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
